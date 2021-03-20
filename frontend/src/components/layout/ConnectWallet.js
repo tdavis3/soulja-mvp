@@ -18,7 +18,7 @@ const ConnectWallet = ({connectWallet, metaData}) => {
                 {/*>*/}
                 {/*    Connect*/}
                 {/*</Button>*/}
-                <Button className="button-connect button-outline" onClick={connectWallet} disabled="true">
+                <Button className="button-connect" onClick={connectWallet} disabled="true">
                     {metaData.userAddress ? "Connected: " + metaData.userAddress : "Connect Wallet"}
                 </Button>
             </div>
