@@ -19,6 +19,14 @@ const souljaBoyProfilePicture = <Image
   }}
 />;
 
+const crankThatPicture = <Image
+  src={process.env.PUBLIC_URL+"/crankthat.jpg"}
+  sx={{
+    width: [ '100%', '50%' ],
+    borderRadius: 8,
+  }}
+/>
+
 const DataField = ({title, data, url}) => {
     return (<>
         {title}<br />
@@ -109,8 +117,14 @@ function App() {
                             p={3}
                             width={1/2}
                             color='#6F6F6F'
-                            bg='secondary'>
-                            Box
+                            bg='#F1F2F6'
+                            sx={{
+                              borderRadius: 8,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center"
+                            }}>
+                            {crankThatPicture}
                           </Box>
                         </Flex>
                     </Route>
