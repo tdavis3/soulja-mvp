@@ -25,12 +25,3 @@
 .error-message {
     margin: 2vmin;
 }
-
-.button-connect {
-    width: 200px;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    font-size: 18px !important;
-    color: black;
-}

@@ -6,7 +6,8 @@ import {
 } from "react-router-dom";
 import Header from "./components/layout/Header";
 import AutographDraw from "./components/AutographDraw";
-import {Flex, Box, Heading, Text, Image, Button} from 'rebass';
+import {Flex, Box, Heading, Text, Image} from 'rebass';
+import {BuyButton, SellButton, RedeemButton} from './components/Button'
 
 const souljaBoyProfilePicture = <Image
   src={process.env.PUBLIC_URL+"/souljaboy.jpg"}
@@ -95,23 +96,23 @@ function App() {
                                 width={1/2}
                                 color='#6F6F6F'
                                 bg='primary'>
-                                <Button className="button-buy">
+                                <BuyButton>
                                     BUY
-                                </Button>
+                                </BuyButton>
                               </Box>
                               <Box
                                 p={3}
                                 width={1/2}
                                 color='#6F6F6F'
                                 bg='secondary'>
-                                <Button className="button-sell">
+                                <SellButton>
                                     SELL
-                                </Button>
+                                </SellButton>
                               </Box>
                             </Flex>
-                            <Button className="button-redeem">
+                            <RedeemButton>
                                 REDEEM
-                            </Button>
+                            </RedeemButton>
                           </Box>
                           <Box
                             p={3}
