@@ -1,6 +1,7 @@
 import React from "react";
 import {Flex, Box, Image} from "rebass";
 
+import {LargeHeading, Text} from './Text'
 
 const musk = <Image
     src={process.env.PUBLIC_URL + "/em_sig.jpg"}
@@ -13,22 +14,22 @@ const musk = <Image
 
 const SignInfo = () => {
     return (
-        <div>
-            <h2>Get Your Album Signed</h2>
+        <div style={{marginTop:160}}>
+            <LargeHeading>Get Your<br />Album Signed</LargeHeading>
             <Flex>
                 <Box
                     p={3}
                     width={1 / 2}
                     color='#6F6F6F'
                     bg='primary'>
-                    <p>
+                    <Text>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore
                         et
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         aliquip
                         ex ea commodo consequat.
-                    </p>
+                    </Text>
                 </Box>
                 <Box
                     p={3}
