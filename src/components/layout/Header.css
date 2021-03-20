@@ -1,0 +1,17 @@
+.Header {
+    display: flex;
+    padding: 3vmin;
+    margin-left: 6vmin;
+    margin-right: 6vmin;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 3em;
+    text-align: center;
+    margin-left: 3vmin;
+}
+
+.logo-img {
+
+}

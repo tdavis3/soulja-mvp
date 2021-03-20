@@ -1,0 +1,35 @@
+.ConnectWallet {
+    display: flex;
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*text-align: center;*/
+    /*flex-grow: 1;*/
+}
+
+.ConnectWallet p {
+    font-size: larger;
+}
+
+.connect-wallet {
+    flex-direction: column;
+    text-align: center;
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
+}
+
+.error-message {
+    margin: 2vmin;
+}
+
+.button-connect {
+    width: 200px;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    font-size: 18px !important;
+}
