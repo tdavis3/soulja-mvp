@@ -6,7 +6,18 @@ import {
 } from "react-router-dom";
 import Header from "./components/layout/Header";
 import AutographDraw from "./components/AutographDraw";
-import {Flex, Box, Heading, Text} from 'rebass';
+import {Flex, Box, Heading, Text, Image} from 'rebass';
+
+const souljaBoyProfilePicture = <Image
+  src={process.env.PUBLIC_URL+"/souljaboy.jpg"}
+  sx={{
+    width: 32,
+    height: 32,
+    borderRadius: 9999,
+    marginLeft: 24,
+    marginRight: 10,
+  }}
+/>;
 
 function App() {
     return (
@@ -33,7 +44,7 @@ function App() {
                               fontSize={[ 3, 4, 5 ]}
                               fontWeight='bold'
                               color='primary'>
-                              By Soulja Boy
+                              <span style={{display:"flex", alignItems:"center"}}>By {souljaBoyProfilePicture} Soulja Boy</span>
                             </Text>
                             <Text
                               fontSize={[ 1, 2, 3 ]}
