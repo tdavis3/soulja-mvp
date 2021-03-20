@@ -41,7 +41,11 @@ contract SignatureRegistrar is Ownable {
         signatures.push(Signature(address(0), ""));
     }
 
-    function sign(address nftContract, uint256 nftID) public {
+    function sign(
+        address nftContract,
+        uint256 nftID,
+        string signatureFile
+    ) public {
         require(
             nftToSignatureID[nftContract][nftID] == 0,
             "SignatureRegistrar: NFT already signed"
@@ -51,7 +55,7 @@ contract SignatureRegistrar is Ownable {
             "SignatureRegistrar: Not allowed to sign this NFT"
         );
 
-        signatures.push(Signature(msg.sender, "temp"));
+        signatures.push(Signature(msg.sender, signatureFile));
 
         uint256 signatureID = signatures.length - 1;
 
