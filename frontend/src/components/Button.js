@@ -2,7 +2,7 @@ import {Button} from 'rebass';
 import styled from 'styled-components';
 
 export const BaseButton = styled(Button)`
-    width: 200px;
+    width: 100%;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
     font-size: 18px !important;
@@ -10,6 +10,7 @@ export const BaseButton = styled(Button)`
     border-radius: 10px !important;
     font-weight: 700;
     font-family: 'Inter';
+    height: 57px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     :focus {
       outline:0;

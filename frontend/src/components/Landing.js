@@ -84,7 +84,8 @@ const Landing = () => {
                         p={3}
                         width={1 / 2}
                         color='#6F6F6F'
-                        bg='primary'>
+                        bg='primary'
+                        paddingLeft={0}>
                         <BuyButton>
                             BUY
                         </BuyButton>
@@ -93,7 +94,8 @@ const Landing = () => {
                         p={3}
                         width={1 / 2}
                         color='#6F6F6F'
-                        bg='secondary'>
+                        bg='secondary'
+                        paddingRight={0}>
                         <SellButton>
                             SELL
                         </SellButton>

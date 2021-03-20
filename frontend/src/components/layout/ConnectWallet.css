@@ -11,8 +11,7 @@
 }
 
 .connect-wallet {
-    flex-direction: column;
-    text-align: center;
+    width: 200px;
 }
 
 .alert {
