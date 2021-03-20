@@ -14,8 +14,14 @@ export const SmallHeading = styled(Heading)`
   color: black;
 `
 
+export const MediumSmallHeading = styled(Heading)`
+  font-size: 30px !important;
+  color: black;
+`
+
 export const LargeHeading = styled(Heading)`
   font-size: 60px !important;
+  color: black;
 `
 
 export const Text = styled(RebassText)`
