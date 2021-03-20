@@ -6,8 +6,9 @@ import {LargeHeading, Text, MediumSmallHeading} from './Text'
 const musk = <Image
     src={process.env.PUBLIC_URL + "/em_sig.jpg"}
     sx={{
-        width: ['80%', '50%'],
+        width: ['80%', '60%'],
         borderRadius: 8,
+        transform: 'rotate(-14deg)'
     }}
 />;
 
