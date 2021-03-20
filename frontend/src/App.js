@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Landing from "./components/Landing";
+import SignedCopies from "./components/SignedCopies";
 
 
 function App() {
@@ -15,9 +16,12 @@ function App() {
                 {/*<header className="App-header">*/}
                 {/*    <AutographDraw/>*/}
                 {/*</header>*/}
+                <Header/>
                 <Switch>
+                    <Route path="/signed">
+                        <SignedCopies/>
+                    </Route>
                     <Route path="/">
-                        <Header/>
                         <Landing/>
                     </Route>
                 </Switch>

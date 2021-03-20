@@ -21,7 +21,7 @@ const crankThatPicture = <Image
         width: ['100%', '50%'],
         borderRadius: 8,
     }}
-/>
+/>;
 
 const DataField = ({title, data, url}) => {
     return (<>
