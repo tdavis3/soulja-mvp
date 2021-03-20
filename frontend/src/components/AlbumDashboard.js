@@ -87,7 +87,8 @@ const AlbumDashboard = () => {
                         width={1 / 2}
                         color='#6F6F6F'
                         bg='primary'
-                        paddingLeft={0}>
+                        paddingLeft={0}
+                        paddingBottom={28}>
                         <BuyButton>
                             BUY
                         </BuyButton>
@@ -97,7 +98,8 @@ const AlbumDashboard = () => {
                         width={1 / 2}
                         color='#6F6F6F'
                         bg='secondary'
-                        paddingRight={0}>
+                        paddingRight={0}
+                        paddingBottom={28}>
                         <SellButton>
                             SELL
                         </SellButton>
