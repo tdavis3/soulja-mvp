@@ -1,8 +1,8 @@
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import Web3Modal from 'web3modal';
-import Web3 from 'web3'
 import {CONNECT_SIGNER_AND_PROVIDER, SET_CONTRACT_LOADING, INITIALIZE_CONTRACT, RESET_DAPP, INITIALIZE_WEBTHREE_MODAL} from "./types";
 import {ethers} from "ethers";
+
 // import contractAddress from "../../contracts/contract-address.json";
 // import CArtifact from "../../contracts/CArtifact.json";
 let contractAddress, CArtifact = null;  // Placeholder for now
@@ -10,6 +10,12 @@ let contractAddress, CArtifact = null;  // Placeholder for now
 const clearWeb3ModalCache = (web3Modal) => {
   web3Modal.clearCachedProvider();
   localStorage.removeItem('walletconnect');
+}
+
+const fetchPrettyName = async (currentUserAddress, provider) => {
+  return currentUserAddress
+  ? await provider.lookupAddress(currentUserAddress) || currentUserAddress
+  : '0x0'
 }
 
 export const connectWallet = (web3Modal) => async dispatch => {
@@ -21,17 +27,20 @@ export const connectWallet = (web3Modal) => async dispatch => {
           const provider = new ethers.providers.Web3Provider(web3Provider);
           const signer = provider.getSigner(0);
           const userAddress = await signer.getAddress();
+          const prettyUserAddress = await fetchPrettyName(userAddress, provider)
           dispatch({
               type: CONNECT_SIGNER_AND_PROVIDER,
               payload: {
                   provider,
                   signer,
-                  userAddress
+                  userAddress,
+                  prettyUserAddress
               }
           });
 
           web3Provider.on('disconnect', async (error) => {
             clearWeb3ModalCache(web3Modal)
+            dispatch({type: RESET_DAPP});
           });
           // TODO We reset the dapp state if the network is changed
           //dispatch({type: RESET_DAPP});
@@ -45,12 +54,14 @@ export const connectWallet = (web3Modal) => async dispatch => {
             if (newAddress === undefined) {
                 return resetDapp();
             }
+            const newPrettyUserAddress = await fetchPrettyName(userAddress, provider)
             dispatch({
                 type: CONNECT_SIGNER_AND_PROVIDER,
                 payload: {
                     provider,
                     signer,
-                    userAddress: newAddress
+                    userAddress: newAddress,
+                    prettyUserAddress: newPrettyUserAddress
                 }
             });
           });

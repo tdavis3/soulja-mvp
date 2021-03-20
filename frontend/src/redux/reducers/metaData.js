@@ -5,9 +5,11 @@ const initialState = {
     loading: false,
     initialized: false,
     provider: undefined,
+    signer: null,
     web3Modal: undefined,
     contract: undefined,
-    userAddress: undefined
+    userAddress: undefined,
+    prettyUserAddress: "0x0"
 };
 
 
@@ -21,10 +23,11 @@ export default function (state = initialState, action) {
             };
         }
         case CONNECT_SIGNER_AND_PROVIDER: {
-            const {provider, userAddress, signer} = action.payload;
+            const {provider, userAddress, prettyUserAddress, signer} = action.payload;
             return {
                 ...state,
                 userAddress,
+                prettyUserAddress,
                 provider,
                 signer
             };
