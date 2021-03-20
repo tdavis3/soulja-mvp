@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from 'rebass';
+import {BaseButton} from '../../components/Button';
 // import Loading from "../Loading";
 // import NetworkErrorMessage from "../errors/NetworkErrorMessage";
 import './ConnectWallet.css';
@@ -18,9 +18,9 @@ const ConnectWallet = ({connectWallet, metaData}) => {
                 {/*>*/}
                 {/*    Connect*/}
                 {/*</Button>*/}
-                <Button className="button-connect" onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
+                <BaseButton onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
                     {metaData.userAddress ? "Connected: " + metaData.prettyUserAddress : "Connect Wallet"}
-                </Button>
+                </BaseButton>
             </div>
             {/* Metamask network should be set to Localhost:8545. */}
             {/*{networkError && (*/}
