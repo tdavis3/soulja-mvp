@@ -5,7 +5,6 @@ export const BaseButton = styled(Button)`
     width: 200px;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
     font-size: 18px !important;
     color: black;
     border-radius: 10px !important;
@@ -22,7 +21,6 @@ export const BaseButton = styled(Button)`
     :active {
       transform: scale(0.98);
       filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)) brightness(90%);
-      outline:0;
     }
 `;
 export const BuyButton = styled(BaseButton)`
