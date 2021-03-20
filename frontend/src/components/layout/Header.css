@@ -1,8 +1,6 @@
 .Header {
     display: flex;
     padding: 3vmin;
-    margin-left: 6vmin;
-    margin-right: 6vmin;
     align-items: center;
 }
 
