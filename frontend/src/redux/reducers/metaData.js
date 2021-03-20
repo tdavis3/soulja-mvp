@@ -5,6 +5,7 @@ const initialState = {
     loading: false,
     initialized: false,
     provider: undefined,
+    signer: null,
     web3Modal: undefined,
     contract: undefined,
     userAddress: undefined

@@ -18,7 +18,7 @@ const ConnectWallet = ({connectWallet, metaData}) => {
                 {/*>*/}
                 {/*    Connect*/}
                 {/*</Button>*/}
-                <Button className="button-connect" onClick={() => {connectWallet(metaData.web3Modal)}}>
+                <Button className="button-connect" onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
                     {metaData.userAddress ? "Connected: " + metaData.userAddress : "Connect Wallet"}
                 </Button>
             </div>

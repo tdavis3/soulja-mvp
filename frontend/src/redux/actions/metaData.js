@@ -1,6 +1,5 @@
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import Web3Modal from 'web3modal';
-import Web3 from 'web3'
 import {CONNECT_SIGNER_AND_PROVIDER, SET_CONTRACT_LOADING, INITIALIZE_CONTRACT, RESET_DAPP, INITIALIZE_WEBTHREE_MODAL} from "./types";
 import {ethers} from "ethers";
 // import contractAddress from "../../contracts/contract-address.json";
@@ -32,6 +31,7 @@ export const connectWallet = (web3Modal) => async dispatch => {
 
           web3Provider.on('disconnect', async (error) => {
             clearWeb3ModalCache(web3Modal)
+            dispatch({type: RESET_DAPP});
           });
           // TODO We reset the dapp state if the network is changed
           //dispatch({type: RESET_DAPP});
