@@ -2,6 +2,7 @@ import React from "react";
 import {Flex, Box, Image} from "rebass";
 
 import {LargeHeading, Text, MediumSmallHeading} from './Text'
+import {RedeemButton} from "./Button";
 
 const musk = <Image
     src={process.env.PUBLIC_URL + "/em_sig.jpg"}
@@ -46,6 +47,9 @@ const SignInfo = () => {
                 {/*TODO: ListView of copies*/}
             </Flex>
             <MediumSmallHeading marginTop={100}>Select an NFT to sign</MediumSmallHeading>
+            <RedeemButton>
+                Soulja Sign Me!
+            </RedeemButton>
         </div>
     );
 }

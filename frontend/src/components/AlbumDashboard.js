@@ -38,7 +38,8 @@ const AlbumDashboard = () => {
                 p={3}
                 width={1 / 2}
                 color='#6F6F6F'
-                bg='primary'>
+                bg='primary'
+                paddingRight={76}>
                 <Heading
                     fontSize={[5, 6, 7]}
                     color='primary'>

@@ -5,7 +5,7 @@ export const BaseButton = styled(Button)`
     width: 100%;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
-    font-size: 18px !important;
+    font-size: 25px !important;
     color: black;
     border-radius: 10px !important;
     font-weight: 700;
