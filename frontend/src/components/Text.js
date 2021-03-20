@@ -9,7 +9,7 @@ export const Heading = styled(RebassHeading)`
 `
 
 export const SmallHeading = styled(Heading)`
-  margin-top: 14px !important;
+  margin-top: 7px !important;
   font-size: 24px !important;
   color: black;
 `
@@ -24,4 +24,19 @@ export const Text = styled(RebassText)`
   font-size: 20px !important;
   font-weight: 400 !important;
   color: rgba(0,0,0,0.7);
+`
+
+export const SmallBoldText = styled(RebassText)`
+  font-family: 'Inter';
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: rgba(0,0,0,0.6);
+  margin-bottom: 9px !important;
+`
+
+export const BoldText = styled(RebassText)`
+  font-family: 'Inter';
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: black;
 `

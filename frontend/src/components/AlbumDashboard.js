@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Flex, Image} from "rebass";
-import {Heading, SmallHeading, Text} from './Text'
+import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 
 
@@ -25,15 +25,15 @@ const crankThatPicture = <Image
 
 const DataField = ({title, data, url}) => {
     return (<>
-        {title}<br/>
-        {data} {url && "linkicon"}
+        <SmallBoldText>{title}</SmallBoldText>
+        <BoldText sx={{fontWeight: 700}}>{data} {url && "linkicon"}</BoldText>
     </>)
 }
 
 
 const AlbumDashboard = () => {
     return (
-        <Flex>
+        <Flex marginBottom={120}>
             <Box
                 p={3}
                 width={1 / 2}
@@ -53,31 +53,35 @@ const AlbumDashboard = () => {
                 <Text
                     fontSize={[1, 2, 3]}
                     fontWeight='bold'
-                    color='primary'>
+                    color='primary'
+                    marginBottom={20}>
                     Soulja Boy’s first digital album drop. Buy $CRANK tokens, sell $CRANK tokens. When you’re ready to
                     join the club of winners, redeem for a signed digital album. You can request Soulja Boy sign your
                     digital album.
                 </Text>
-                <Flex>
+                <Flex
+                  marginBottom={48}>
                     <Box
-                        p={3}
                         width={1 / 3}
                         color="black"
-                        bg="primary">
+                        bg="primary"
+                        paddingTop={28}
+                        paddingLeft={0}>
                         <DataField title="Last Traded Price" data="420.69"/>
                     </Box>
                     <Box
-                        p={3}
                         width={1 / 3}
                         color="black"
-                        bg="primary">
+                        bg="primary"
+                        paddingTop={28}>
                         <DataField title="Available" data="77/420"/>
                     </Box>
                     <Box
-                        p={3}
                         width={1 / 3}
                         color="black"
-                        bg="primary">
+                        bg="primary"
+                        paddingTop={28}
+                        paddingRight={0}>
                         <DataField title="ERC20 Contract" data="0x00000" url="http://"/>
                     </Box>
                 </Flex>
@@ -88,7 +92,8 @@ const AlbumDashboard = () => {
                         color='#6F6F6F'
                         bg='primary'
                         paddingLeft={0}
-                        paddingBottom={28}>
+                        paddingBottom={28}
+                        paddingTop={0}>
                         <BuyButton>
                             BUY
                         </BuyButton>
@@ -99,7 +104,8 @@ const AlbumDashboard = () => {
                         color='#6F6F6F'
                         bg='secondary'
                         paddingRight={0}
-                        paddingBottom={28}>
+                        paddingBottom={28}
+                        paddingTop={0}>
                         <SellButton>
                             SELL
                         </SellButton>
