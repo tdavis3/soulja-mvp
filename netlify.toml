@@ -1,0 +1,10 @@
+[build]
+  command = "yarn build"
+  functions = "functions-build"
+  publish = "build"
+
+# support SPA setup
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
