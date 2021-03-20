@@ -1,5 +1,6 @@
 import React from "react";
-import {Box, Flex, Heading, Image, Text} from "rebass";
+import {Box, Flex, Image} from "rebass";
+import {Heading, SmallHeading, Text} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 
 
@@ -43,12 +44,12 @@ const AlbumDashboard = () => {
                     color='primary'>
                     Soulja World
                 </Heading>
-                <Text
+                <SmallHeading
                     fontSize={[3, 4, 5]}
                     fontWeight='bold'
                     color='primary'>
                     <span style={{display: "flex", alignItems: "center"}}>By {souljaBoyProfilePicture} Soulja Boy</span>
-                </Text>
+                </SmallHeading>
                 <Text
                     fontSize={[1, 2, 3]}
                     fontWeight='bold'
