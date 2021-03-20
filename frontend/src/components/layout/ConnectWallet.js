@@ -19,7 +19,7 @@ const ConnectWallet = ({connectWallet, metaData}) => {
                 {/*    Connect*/}
                 {/*</Button>*/}
                 <Button className="button-connect" onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
-                    {metaData.userAddress ? "Connected: " + metaData.userAddress : "Connect Wallet"}
+                    {metaData.userAddress ? "Connected: " + metaData.prettyUserAddress : "Connect Wallet"}
                 </Button>
             </div>
             {/* Metamask network should be set to Localhost:8545. */}
