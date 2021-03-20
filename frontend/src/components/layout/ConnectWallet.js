@@ -10,7 +10,7 @@ import {connectWallet} from "../../redux/actions/metaData";
 const ConnectWallet = ({connectWallet, metaData}) => {
     return (
         <div className="ConnectWallet">
-            <div className="connect-wallet">
+            <div>
                 {/*<p>Please connect your wallet to the Rinkeby Test network.</p>*/}
                 {/*<Button*/}
                 {/*    style={{margin: '1.5vmin'}}*/}

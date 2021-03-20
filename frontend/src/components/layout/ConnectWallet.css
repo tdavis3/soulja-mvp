@@ -10,10 +10,6 @@
     font-size: larger;
 }
 
-.connect-wallet {
-    width: 200px;
-}
-
 .alert {
     display: flex;
     justify-content: center;

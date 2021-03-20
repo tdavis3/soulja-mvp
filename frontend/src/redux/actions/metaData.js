@@ -14,7 +14,7 @@ const clearWeb3ModalCache = (web3Modal) => {
 
 const fetchPrettyName = async (currentUserAddress, provider) => {
   return currentUserAddress
-  ? await provider.lookupAddress(currentUserAddress) || currentUserAddress
+  ? await provider.lookupAddress(currentUserAddress) || currentUserAddress.substring(0,13) + "…"
   : '0x0'
 }
 
