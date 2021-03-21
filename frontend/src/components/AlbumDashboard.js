@@ -4,6 +4,8 @@ import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 import {Modal} from "./Modal"
 import BuyForm from "./forms/BuyForm"
+import SellForm from "./forms/SellForm"
+import RedeemForm from "./forms/RedeemForm"
 import { ExternalLink, X } from 'react-feather';
 import styled from 'styled-components';
 
@@ -136,6 +138,14 @@ const AlbumDashboard = () => {
             <Modal isOpen={showBuyModal} onDismiss={() => setShowBuyModal(false)}>
               <StyledLink href="javascript:void(0);" onClick={() => setShowBuyModal(false)}><X /></StyledLink>
               <BuyForm />
+            </Modal>
+            <Modal isOpen={showSellModal} onDismiss={() => setShowSellModal(false)}>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowSellModal(false)}><X /></StyledLink>
+              <SellForm />
+            </Modal>
+            <Modal isOpen={showRedeemModal} onDismiss={() => setShowRedeemModal(false)}>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowRedeemModal(false)}><X /></StyledLink>
+              <RedeemForm />
             </Modal>
         </Flex>
     );
