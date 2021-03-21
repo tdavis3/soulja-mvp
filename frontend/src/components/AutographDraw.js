@@ -37,7 +37,8 @@ const AutographDraw = (props) => {
                     outputArr.push(point.x);
                     outputArr.push(point.y);
                 });
-                // -1 separates lines
+                // (-1,-1) separates lines
+                outputArr.push(-1);
                 outputArr.push(-1);
             });
         }
