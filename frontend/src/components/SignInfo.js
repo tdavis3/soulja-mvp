@@ -3,7 +3,7 @@ import {Flex, Box, Image, Link} from "rebass";
 import {Modal} from "./Modal"
 import {useHistory} from 'react-router-dom';
 import {X} from 'react-feather';
-import {LargeHeading, Text, MediumSmallHeading} from './Text'
+import {LargeHeading, Text, BoldText, MediumSmallHeading} from './Text'
 import {RedeemButton} from "./Button";
 import RequestForm from "./forms/RequestForm"
 import styled from 'styled-components';
@@ -61,7 +61,7 @@ const SignInfo = () => {
                 <StyledLink href="javascript:void(0);" onClick={() => setShowRequestModal(false)}><X/></StyledLink>
                 <RequestForm/>
             </Modal>
-            <StyledLink href="javascript:void(0);" onClick={() => history.push('/signed')}>View</StyledLink>
+            <BoldText style={{marginTop: 20, textAlign:"center"}}><StyledLink href="javascript:void(0);" onClick={() => history.push('/signed')}>See All Signed Copies</StyledLink></BoldText>
         </div>
     );
 }
