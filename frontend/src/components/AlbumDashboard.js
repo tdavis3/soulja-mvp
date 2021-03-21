@@ -4,11 +4,12 @@ import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 import {Modal} from "./Modal"
 import BuyForm from "./forms/BuyForm"
-import { ExternalLink } from 'react-feather';
+import { ExternalLink, X } from 'react-feather';
 import styled from 'styled-components';
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  color: black;
 `
 
 const souljaBoyProfilePicture = <Image
@@ -133,10 +134,7 @@ const AlbumDashboard = () => {
                 {crankThatPicture}
             </Box>
             <Modal isOpen={showBuyModal} onDismiss={() => setShowBuyModal(false)}>
-              <button className="close-button" onClick={() => setShowBuyModal(false)}>
-                {/*<VisuallyHidden>Close</VisuallyHidden>*/}
-                <span aria-hidden>×</span>
-              </button>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowBuyModal(false)}><X /></StyledLink>
               <BuyForm />
             </Modal>
         </Flex>
