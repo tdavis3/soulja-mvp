@@ -1,5 +1,6 @@
 import React from "react";
 import {Box, Flex} from "rebass";
+import {Link} from "react-router-dom";
 
 import {Heading, SmallHeading} from './Text'
 
@@ -16,8 +17,10 @@ const SignedCopies = () => {
                 >
                     <SmallHeading>Owner</SmallHeading>
                     <ul>
-                        <li style={{marginBottom: 20}}>evan The God</li>
-                        <li>katz The Man</li>
+                        <li style={{marginBottom: 20}}>
+                            <Link to={{pathname: "/signed-copy"}}>katz The Man</Link>
+                        </li>
+                        <li>evan The God</li>
                         <li>td3 The Boss</li>
                     </ul>
                 </Box>

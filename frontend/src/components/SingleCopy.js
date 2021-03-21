@@ -25,13 +25,12 @@ const souljaBoyProfilePicture = <Image
 
 const SingleCopy = () => {
     return (
-        <Flex marginBottom={120}>
+        <Flex>
             <Box
                 p={3}
                 width={1 / 2}
                 color='#6F6F6F'
-                bg='primary'
-                paddingRight={76}>
+                bg='primary'>
                 <Heading>
                     Soulja World #1
                 </Heading>
@@ -46,10 +45,10 @@ const SingleCopy = () => {
                     aliquip
                     ex ea commodo consequat.
                 </Text>
-                <Flex>
+                <div>
                     <MediumSmallHeading>Signature</MediumSmallHeading>
                     {/*TODO: shadowed signature box*/}
-                </Flex>
+                </div>
             </Box>
             <Box
                 p={3}
@@ -61,7 +60,8 @@ const SingleCopy = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center"
-                }}>
+                }}
+            >
                 {crankThatPicture}
             </Box>
         </Flex>
