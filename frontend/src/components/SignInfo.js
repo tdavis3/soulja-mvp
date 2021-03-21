@@ -1,9 +1,17 @@
-import React from "react";
-import {Flex, Box, Image} from "rebass";
+import React, {useState} from "react";
+import {Flex, Box, Image, Link} from "rebass";
+import {Modal} from "./Modal"
 import {useHistory} from 'react-router-dom';
-
+import {X} from 'react-feather';
 import {LargeHeading, Text, MediumSmallHeading} from './Text'
 import {RedeemButton} from "./Button";
+import RequestForm from "./forms/RequestForm"
+import styled from 'styled-components';
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
 
 const musk = <Image
     src={process.env.PUBLIC_URL + "/em_sig.jpg"}
@@ -16,7 +24,7 @@ const musk = <Image
 
 
 const SignInfo = () => {
-
+    const [showRequestModal, setShowRequestModal] = useState(false);
     let history = useHistory();
 
     return (
@@ -46,9 +54,14 @@ const SignInfo = () => {
                 {/*TODO: ListView of copies*/}
             </Flex>
             <MediumSmallHeading marginTop={100}>Select an NFT to sign</MediumSmallHeading>
-            <RedeemButton onClick={() => history.push('/signed')}>
+            <RedeemButton onClick={() => setShowRequestModal(true)}>
                 Soulja Sign Me!
             </RedeemButton>
+            <Modal isOpen={showRequestModal} onDismiss={() => setShowRequestModal(false)}>
+                <StyledLink href="javascript:void(0);" onClick={() => setShowRequestModal(false)}><X/></StyledLink>
+                <RequestForm/>
+            </Modal>
+            <StyledLink href="javascript:void(0);" onClick={() => history.push('/signed')}>View</StyledLink>
         </div>
     );
 }
