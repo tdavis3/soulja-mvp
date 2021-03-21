@@ -54,7 +54,7 @@ const SignInfo = () => {
                 {/*TODO: ListView of copies*/}
             </Flex>
             <MediumSmallHeading marginTop={100}>Select an NFT to sign</MediumSmallHeading>
-            <RedeemButton onClick={() => setShowRequestModal(true)}>
+            <RedeemButton style={{marginTop: 25}} onClick={() => setShowRequestModal(true)}>
                 Soulja Sign Me!
             </RedeemButton>
             <Modal isOpen={showRequestModal} onDismiss={() => setShowRequestModal(false)}>
