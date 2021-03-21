@@ -1,5 +1,24 @@
 // import { Float16Array, getFloat16, setFloat16, hfround } from "@petamoriken/float16"
-import { ethers } from 'ethers'
+import { ethers } from 'ethers';
+import fetch from 'node-fetch';
+import abi from './metadatastorage.js';
+
+global.fetch = fetch
+
+const url = 'https://rpc-mumbai.maticvigil.com'
+const network = {
+  name: 'Mumbai',
+  chainId: 80001,
+};
+
+//mainnet
+/* const network = {
+  name: 'matic',
+  chainId: 137,
+}; */
+
+const contractAddress = '0x2ed544488B28eC61cb10BC83b815F9477CD22508';
+const key = 'd08793d2a78b7f0c52a46c8320ce00c4849664278d0e859c3e85ea9ea201d14b'; // priv key
 
 
 
@@ -8,34 +27,53 @@ function convertBlock(buffer){
   var i, l = incomingData.length;
   var outputData = new Float32Array(incomingData.length); 
   for (i = 0; i < l; i++) {
-      outputData[i] = (incomingData[i] - 128) / 128.0; 
+      outputData[i] = (incomingData[i] - 128) / 128.0;
+  }
   return outputData; 
 }
 
 // floats to dec to Bytes
 function floatsToBytes(array){
-  // console.log(array)
-  // console.log(array.buffer)
-  // let outputData = new Float16Array(array.length)
-  // let temp = new Float16Array(1)
-  // let dataview = new DataView(temp.buffer)
-  // for (let i = 0; i < array.length; i++){
-  //   console.log(array[i]);
-  //   setFloat16(dataview, 0, array[i], true)
-  //   outputData[i] = getFloat16(dataview, 0)
-  // }
-  // console.log(getFloat16(new DataView(outputData.buffer),0))
-  // const output = ethers.utils.arrayify(outputData)
-  const output = ethers.utils.arrayify(array)
-  return output
-  // return new_view
+  var buf = new ArrayBuffer(array.length * 4);
+  var view = new DataView(buf);
+  array.forEach((float, i) => {
+    view.setFloat32(i*4, float);
+  })
+
+  const output = new Uint8Array(view.buffer); 
+  return Array.from(output)
 }
-// floatsToBytes(new Float32Array([244, 234, 49]))
 
 
 export async function handler(event) {
+  const { floatsStr, message = '' } = JSON.parse(event && event.body ? event.body : {});
+  if (!floatsStr) {
+    return {
+      statusCode: 400
+    }
+  }
+
+  const floats = JSON.parse(floatsStr);
+
+  const provider = new ethers.providers.StaticJsonRpcProvider(url, network);
+  const wallet = new ethers.Wallet(key, provider);
+  wallet.connect(provider);
+  const MetadataStorage = new ethers.Contract(contractAddress, abi, wallet);
+  
+  // Random ID
+  const id = Math.floor(Math.random() * 1000000000);
+  const bytes = floatsToBytes(floats);
+
+  const res = await MetadataStorage.storeData(id, bytes, message);
+  console.log(res);
+
   return {
     statusCode: 200,
-    body: JSON.stringify({ success: 'hello!' })
+    body: JSON.stringify({ success: res, id }),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    }
   }
 }

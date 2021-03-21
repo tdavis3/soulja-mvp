@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {Box, Flex, Image} from "rebass";
 
 import {Heading, SmallHeading, MediumSmallHeading, Text} from './Text';
+import CanvasDraw from "react-canvas-draw";
 
 
 const crankThatPicture = <Image
@@ -24,6 +25,30 @@ const souljaBoyProfilePicture = <Image
 />;
 
 const SingleCopy = () => {
+
+    const [signatureId, setSignatureId] = useState(161890784);
+    const [message, setMessage] = useState('');
+
+    const canvasRef = useRef(null);
+    const canvasRef2 = useRef(null);
+
+    useEffect(() => {
+      async function get() {
+        if (!canvasRef.current) return;
+        const res = await fetch('http://localhost:9000/get-autograph', {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({ id: signatureId })
+        });
+        const json = await res.json();
+        const autograph = json.autograph;
+        canvasRef.current.loadSaveData(JSON.stringify(autograph));
+        canvasRef2.current.loadSaveData(JSON.stringify(autograph).replaceAll('#FFF', '#444'));
+        setMessage(json.message)
+      }
+      get();
+    }, [signatureId, canvasRef]);
+
     return (
         <Flex>
             <Box
@@ -37,17 +62,21 @@ const SingleCopy = () => {
                 <SmallHeading>
                     <span style={{display: "flex", alignItems: "center"}}>Owned by {souljaBoyProfilePicture} katz The Man</span>
                 </SmallHeading>
-                <Text marginBottom={20}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat.
-                </Text>
+                {message &&<Text marginBottom={20}>
+                    "{message}" - Soulja
+                </Text> }
                 <div>
                     <MediumSmallHeading>Signature</MediumSmallHeading>
-                    {/*TODO: shadowed signature box*/}
+                    <CanvasDraw
+                      disabled
+                      brushRadius={4}
+                      lazyRadius={2}
+                      ref={canvasRef2}
+                      style={{ margin: '20px auto 20px auto', padding: '5px', backgroundColor: '#F1F2F6', borderRadius: '10px' }}
+                    />
+                    <div>
+
+                    </div>
                 </div>
             </Box>
             <Box
@@ -62,7 +91,15 @@ const SingleCopy = () => {
                     justifyContent: "center"
                 }}
             >
-                {crankThatPicture}
+                <CanvasDraw
+                  disabled
+                  brushRadius={4}
+                  lazyRadius={2}
+                  ref={canvasRef}
+                  imgSrc={process.env.PUBLIC_URL + "/crankthat.jpg"}
+                  style={{ margin: 'auto', padding: '30px 80px 30px 80px', backgroundColor: '#F1F2F6', borderRadius: '10px' }}
+                  brushColor="#FFF"
+                />
             </Box>
         </Flex>
     );

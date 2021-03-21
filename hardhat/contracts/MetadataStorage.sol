@@ -12,11 +12,13 @@ contract MetadataStorage is AccessControl {
     _setupRole(WRITER_ROLE, writer);
   }
 
-  mapping(uint256 => bytes) public store;
+  mapping(uint256 => bytes) public store; // stores signature path
+  mapping(uint256 => string) public textStore;
 
-  function storeData(uint256 id, bytes memory data) public {
+  function storeData(uint256 id, bytes memory data, string memory text) public {
     require(hasRole(WRITER_ROLE, msg.sender));
     store[id] = data;
+    textStore[id] = text;
   }
 
   function addWriter(address newWriter) public {

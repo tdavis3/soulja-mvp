@@ -19,7 +19,7 @@ task("accounts", "Prints the list of accounts", async () => {
  */
 module.exports = {
   solidity: "0.8.0",
-  defaultNetwork: "rinkeby",
+  defaultNetwork: "matic",
   networks: {
     hardhat: {},
     matic: {

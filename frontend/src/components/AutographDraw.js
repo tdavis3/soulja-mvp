@@ -1,11 +1,18 @@
 import React, {useRef, useState, useEffect} from "react";
 import CanvasDraw from "react-canvas-draw";
+import { Label, Checkbox, Textarea } from '@rebass/forms'
+import { Box } from 'rebass'
+import { FormButton } from './Button';
 
 const AutographDraw = (props) => {
     const {imgSrc = ""} = props;
     const canvasRef = useRef(null);
     // Keeps track of how many lines are in image
     const [numLines, setNumLines] = useState(0);
+    // Whether album is shown on signature canvas background
+    const [showAlbum, setShowAlbum] = useState(true);
+    // Message value
+    const [message, setMessage] = useState('');
 
     const onChange = () => {
         if (!canvasRef.current) return;
@@ -37,11 +44,13 @@ const AutographDraw = (props) => {
                     outputArr.push(point.x);
                     outputArr.push(point.y);
                 });
-                // -1 separates lines
+                // (-1,-1) separates lines
+                outputArr.push(-1);
                 outputArr.push(-1);
             });
         }
         console.log(outputArr);
+        return outputArr;
     };
 
     // Returns line but with reduced precision
@@ -79,15 +88,54 @@ const AutographDraw = (props) => {
         canvasRef.current.loadSaveData(reducedPrecisionSaveData, true); // 2nd argument = "load immediately, don't do redraw animation"
     };
 
+    const uploadAutograph = async () => {
+      const autograph = parseLines();
+      const res = await fetch('http://localhost:9000/upload-autograph', {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({ floatsStr: JSON.stringify(autograph), message })
+      });
+      console.log(res)
+      if(res.status === 200) {
+        alert('Successfully added autograph!')
+        const json = await res.json();
+        const id = json.id;
+        // TODO: do something with this ID in eth!
+      } else {
+        alert('Failed :(')
+      }
+    };
+
     return (
-        <div>
+        <div style={{ margin: 'auto', textAlign: 'center' }}>
             <CanvasDraw
                 brushRadius={4}
                 lazyRadius={2}
                 ref={canvasRef}
                 onChange={onChange}
-                imgSrc={imgSrc}
+                imgSrc={showAlbum ? process.env.PUBLIC_URL + "/crankthat.jpg" : ""}
+                style={{ margin: 'auto', padding: '30px 80px 30px 80px', backgroundColor: '#F1F2F6', borderRadius: '10px' }}
+                brushColor="#FFF"
             />
+            {/* Doesn't work :( stretch goal (TODO) <div style={{ display: 'inherit', margin: '20px auto 20px auto', width: '450px', }}>
+              <FormButton onClick={() => setShowAlbum(!showAlbum)}>
+                {showAlbum ? "Hide album background" : "Show album background"}
+              </FormButton>
+            </div> */}
+            <Box style={{ width: '560px', margin: '30px auto 30px auto' }}>
+              <Label htmlFor='comment'>Message</Label>
+              <Textarea
+                id='comment'
+                name='comment'
+                value={message}
+                onChange={event => setMessage(event.target.value)}
+              />
+            </Box>
+            <div style={{ display: 'inherit', margin: '20px auto 20px auto', width: '450px', }}>
+              <FormButton onClick={uploadAutograph}>
+                Add Autograph!
+              </FormButton>
+            </div>
         </div>
     );
 };
