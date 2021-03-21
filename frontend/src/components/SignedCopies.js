@@ -1,29 +1,42 @@
 import React from "react";
-import {Flex} from "rebass";
+import {Box, Flex} from "rebass";
+import {Link} from "react-router-dom";
 
-import {Heading} from './Text'
+import {Heading, SmallHeading} from './Text'
 
 const SignedCopies = () => {
     return (
         <div>
             <Heading>Signed Copies</Heading>
             <Flex>
-                <div>
-                    <p>Owner</p>
+                <Box
+                    p={3}
+                    width={1 / 2}
+                    color='#6F6F6F'
+                    bg='primary'
+                >
+                    <SmallHeading>Owner</SmallHeading>
                     <ul>
+                        <li style={{marginBottom: 20}}>
+                            <Link to={{pathname: "/signed-copy"}}>katz The Man</Link>
+                        </li>
                         <li>evan The God</li>
-                        <li>katz The Man</li>
                         <li>td3 The Boss</li>
                     </ul>
-                </div>
-                <div>
-                    <p>Message</p>
+                </Box>
+                <Box
+                    p={3}
+                    width={1 / 2}
+                    color='#6F6F6F'
+                    bg='primary'
+                >
+                    <SmallHeading>Message</SmallHeading>
                     <ul>
-                        <li>To my parents who died in an acrobatics accident...</li>
+                        <li style={{marginBottom: 20}}>To my parents who died in an acrobatics accident...</li>
                         <li>To my parents who died in an acrobatics accident...</li>
                         <li>To my parents who died in an acrobatics accident...</li>
                     </ul>
-                </div>
+                </Box>
             </Flex>
         </div>
     );

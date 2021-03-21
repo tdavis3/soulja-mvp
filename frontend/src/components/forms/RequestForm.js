@@ -4,6 +4,7 @@ import {
     Label,
     Input,
     Select,
+    Textarea
 } from '@rebass/forms'
 import {FormButton} from "../Button";
 import {connect} from "react-redux";
@@ -18,42 +19,28 @@ const crankThatPicture = <Image
     }}
 />;
 
-const RedeemForm = ({connectWallet, metaData}) => {
-
-    const [amountToRedeem, setAmountToRedeem] = useState(0);
-
-    const handleChange = e => {
-        setAmountToRedeem(e.target.value);
-    };
-
+const RequestForm = ({connectWallet, metaData}) => {
     return (
         <Box
             as='form'
             onSubmit={e => e.preventDefault()}
             py={3}>
-            <SmallHeading marginBottom={20}>Redeem</SmallHeading>
+            <SmallHeading marginBottom={20}>Request Signature</SmallHeading>
             <Flex mx={-2} mb={3}>
                 <Box width={1 / 3} px={2}>
-
                     {crankThatPicture}
                 </Box>
                 <Box width={2 / 3} px={2}>
-                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <Label htmlFor='amount'><BoldText>$CRANK</BoldText></Label>
-                        <Input
+                        <Label htmlFor='amount'><BoldText>Personal Message</BoldText></Label>
+                        <Textarea
                             id='amount'
                             name='amount'
-                            value={amountToRedeem}
-                            width={100}
-                            type="number"
-                            textAlign="right"
-                            onChange={handleChange}
+                            value=''
+                            width={"100%"}
+                            height={80}
+                            marginTop={20}
+                            type="number" //if we do number then user cant enter decimals :(
                         />
-                    </Box>
-                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 20}}>
-                        <BoldText>You'll Receive</BoldText>
-                        {amountToRedeem > 0 ? amountToRedeem : 0} NFT
-                    </Box>
                 </Box>
             </Flex>
             <Flex mx={-2} mb={3}>
@@ -64,7 +51,7 @@ const RedeemForm = ({connectWallet, metaData}) => {
             <FormButton onClick={!metaData.userAddress && (() => {
                 connectWallet(metaData.web3Modal)
             })}>
-                {metaData.userAddress ? "REDEEM" : "CONNECT WALLET"}
+                {metaData.userAddress ? "REQUEST" : "CONNECT WALLET"}
             </FormButton>
         </Box>
     )
@@ -76,4 +63,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {connectWallet})(RedeemForm);
+export default connect(mapStateToProps, {connectWallet})(RequestForm);

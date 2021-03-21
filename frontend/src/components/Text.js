@@ -10,6 +10,7 @@ export const Heading = styled(RebassHeading)`
 
 export const SmallHeading = styled(Heading)`
   margin-top: 7px !important;
+  font-weight: 500 !important;
   font-size: 24px !important;
   color: black;
 `
