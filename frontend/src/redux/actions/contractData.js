@@ -38,4 +38,3 @@ export const sendBid = (data) => async dispatch => {
         console.log(error);
     }
 };
-
