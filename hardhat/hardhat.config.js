@@ -29,6 +29,10 @@ module.exports = {
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad",
       accounts: ["d08793d2a78b7f0c52a46c8320ce00c4849664278d0e859c3e85ea9ea201d14b"] // 0x69647a6B360F0f32B4f5F6De2cA33065C35cB183
+    },
+    local: {
+      url: "http://127.0.0.1:7545",
+      accounts: ["18bb954b3363c610292e30cefc901ea50034a2b14f511a7a1a6d130d90091041"]
     }
   },
   gasReporter: {
