@@ -1,10 +1,15 @@
 import React, {useState} from "react";
-import {Box, Flex, Image} from "rebass";
+import {Box, Flex, Image, Link} from "rebass";
 import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 import {Modal} from "./Modal"
 import BuyForm from "./forms/BuyForm"
+import { ExternalLink } from 'react-feather';
+import styled from 'styled-components';
 
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`
 
 const souljaBoyProfilePicture = <Image
     src={process.env.PUBLIC_URL + "/souljaboy.jpg"}
@@ -28,7 +33,9 @@ const crankThatPicture = <Image
 const DataField = ({title, data, url}) => {
     return (<>
         <SmallBoldText>{title}</SmallBoldText>
-        <BoldText sx={{fontWeight: 700}}>{data} {url && "linkicon"}</BoldText>
+        {url
+        ? <StyledLink href={url}><BoldText sx={{fontWeight: 700}}>{data}<ExternalLink size={16} /></BoldText></StyledLink>
+        : <BoldText sx={{fontWeight: 700}}>{data}</BoldText>}
     </>)
 }
 
@@ -79,7 +86,7 @@ const AlbumDashboard = () => {
                         bg="primary"
                         paddingTop={28}
                         paddingRight={0}>
-                        <DataField title="ERC20 Contract" data="0x00000" url="http://"/>
+                        <DataField title="ERC20 Contract" data="0x00000…" url="http://"/>
                     </Box>
                 </Flex>
                 <Flex>
