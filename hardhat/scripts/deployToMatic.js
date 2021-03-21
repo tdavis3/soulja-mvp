@@ -14,8 +14,11 @@ async function main() {
   await hre.run('compile');
 
   // We get the contract to deploy
+  const signers = await hre.ethers.getSigners();
+  const addresses = signers.map(signer => signer.address);
+
   const MetadataStorage = await hre.ethers.getContractFactory("MetadataStorage");
-  const ms = await MetadataStorage.deploy('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266');
+  const ms = await MetadataStorage.deploy(addresses[0]);
 
   await ms.deployed();
 
