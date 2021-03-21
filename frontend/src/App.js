@@ -25,6 +25,7 @@ function App() {
                     </Route>
                     <Route path="/autograph">
                         <AutographDraw />
+                    </Route>
                     <Route path="/signed-copy">
                         <SingleCopy/>
                     </Route>
