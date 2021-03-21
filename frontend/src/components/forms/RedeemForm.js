@@ -26,6 +26,16 @@ const RedeemForm = ({connectWallet, metaData}) => {
         setAmountToRedeem(e.target.value);
     };
 
+    const handleRedeem = () => {
+        if (!metaData.userAddress) {
+            connectWallet(metaData.web3Modal);
+            return;
+        }
+        if (metaData.userAddress) {
+            metaData.crankContract.mintNFT();
+        }
+    }
+
     return (
         <Box
             as='form'
@@ -61,9 +71,7 @@ const RedeemForm = ({connectWallet, metaData}) => {
 
                 </Box>
             </Flex>
-            <FormButton onClick={!metaData.userAddress && (() => {
-                connectWallet(metaData.web3Modal)
-            })}>
+            <FormButton onClick={handleRedeem}>
                 {metaData.userAddress ? "REDEEM" : "CONNECT WALLET"}
             </FormButton>
         </Box>
