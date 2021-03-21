@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from 'rebass';
+import {WalletButton} from '../../components/Button';
 // import Loading from "../Loading";
 // import NetworkErrorMessage from "../errors/NetworkErrorMessage";
 import './ConnectWallet.css';
@@ -10,7 +10,7 @@ import {connectWallet} from "../../redux/actions/metaData";
 const ConnectWallet = ({connectWallet, metaData}) => {
     return (
         <div className="ConnectWallet">
-            <div className="connect-wallet">
+            <div>
                 {/*<p>Please connect your wallet to the Rinkeby Test network.</p>*/}
                 {/*<Button*/}
                 {/*    style={{margin: '1.5vmin'}}*/}
@@ -18,9 +18,9 @@ const ConnectWallet = ({connectWallet, metaData}) => {
                 {/*>*/}
                 {/*    Connect*/}
                 {/*</Button>*/}
-                <Button className="button-connect" onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
+                <WalletButton onClick={!metaData.userAddress && (() => {connectWallet(metaData.web3Modal)})}>
                     {metaData.userAddress ? "Connected: " + metaData.prettyUserAddress : "Connect Wallet"}
-                </Button>
+                </WalletButton>
             </div>
             {/* Metamask network should be set to Localhost:8545. */}
             {/*{networkError && (*/}
