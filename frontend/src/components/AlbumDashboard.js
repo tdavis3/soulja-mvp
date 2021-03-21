@@ -3,6 +3,7 @@ import {Box, Flex, Image} from "rebass";
 import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 import {Modal} from "./Modal"
+import BuyForm from "./forms/BuyForm"
 
 
 const souljaBoyProfilePicture = <Image
@@ -129,8 +130,7 @@ const AlbumDashboard = () => {
                 {/*<VisuallyHidden>Close</VisuallyHidden>*/}
                 <span aria-hidden>×</span>
               </button>
-              <p>Hello there. I am a dialog</p>
-              <BuyButton>BUY</BuyButton>
+              <BuyForm />
             </Modal>
         </Flex>
     );
