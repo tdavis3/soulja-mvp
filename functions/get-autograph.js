@@ -4,7 +4,7 @@ import abi from './metadatastorage.js';
 
 global.fetch = fetch
 
-const url = 'https://rpc-mumbai.matic.today';
+const url = 'https://rpc-mumbai.maticvigil.com';
 const network = {
   name: 'Mumbai',
   chainId: 80001,
@@ -16,7 +16,7 @@ const network = {
   chainId: 137,
 }; */
 
-const contractAddress = '0xc700769a1F0184B3af2b5808f4Be2000580de793';
+const contractAddress = '0x2ed544488B28eC61cb10BC83b815F9477CD22508';
 const key = 'd08793d2a78b7f0c52a46c8320ce00c4849664278d0e859c3e85ea9ea201d14b'; // priv key
 
 
@@ -100,22 +100,31 @@ export async function handler(event) {
   }
   const dataId = Number(id);
 
-  const provider = new ethers.providers.StaticJsonRpcProvider(url, network);
+  const provider = new ethers.providers.JsonRpcProvider(url, network);
   await provider.ready
 
   const wallet = new ethers.Wallet(key, provider);
   wallet.connect(provider);
 
   // Read only
-  const MetadataStorage = new ethers.Contract(contractAddress, abi, wallet);
+  const MetadataStorage = new ethers.Contract(contractAddress, abi, provider);
 
   const byteData = await MetadataStorage.store(dataId);
+  const message = await MetadataStorage.textStore(dataId);
+  console.log(byteData);
   const byteArray = ethers.utils.arrayify(byteData);
   
   const autograph = autographFromByteArray(byteArray);
 
   return {
     statusCode: 200,
-    body: JSON.stringify()
+    body: JSON.stringify({autograph, message}),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    }
   }
 }
+
+handler(({body: '{"id": 2}'}));

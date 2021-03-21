@@ -17,7 +17,7 @@ const network = {
   chainId: 137,
 }; */
 
-const contractAddress = '0xc700769a1F0184B3af2b5808f4Be2000580de793';
+const contractAddress = '0x2ed544488B28eC61cb10BC83b815F9477CD22508';
 const key = 'd08793d2a78b7f0c52a46c8320ce00c4849664278d0e859c3e85ea9ea201d14b'; // priv key
 
 
@@ -46,7 +46,7 @@ function floatsToBytes(array){
 
 
 export async function handler(event) {
-  const { floatsStr } = JSON.parse(event && event.body ? event.body : {});
+  const { floatsStr, message = '' } = JSON.parse(event && event.body ? event.body : {});
   if (!floatsStr) {
     return {
       statusCode: 400
@@ -64,11 +64,16 @@ export async function handler(event) {
   const id = Math.floor(Math.random() * 1000000000);
   const bytes = floatsToBytes(floats);
 
-  const res = await MetadataStorage.storeData(id, bytes);
+  const res = await MetadataStorage.storeData(id, bytes, message);
   console.log(res);
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ success: res, id })
+    body: JSON.stringify({ success: res, id }),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    }
   }
 }
