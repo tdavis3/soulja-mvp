@@ -7,7 +7,9 @@ const initialState = {
     provider: undefined,
     signer: null,
     web3Modal: undefined,
-    contract: undefined,
+    crankContract: undefined,
+    registrarContract: undefined,
+    nftContract: undefined,
     userAddress: undefined,
     prettyUserAddress: "0x0"
 };
@@ -33,11 +35,13 @@ export default function (state = initialState, action) {
             };
         }
         case INITIALIZE_CONTRACT: {
-            const {contract} = action.payload;
+            const {crankContract, nftContract, registrarContract} = action.payload;
             return {
                 ...state,
                 initialized: true,
-                contract: contract,
+                crankContract: crankContract,
+                nftContract: nftContract,
+                registrarContract: registrarContract,
                 loading: false
             };
         }

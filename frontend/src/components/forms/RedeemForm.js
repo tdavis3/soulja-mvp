@@ -9,6 +9,10 @@ import {FormButton} from "../Button";
 import {connect} from "react-redux";
 import {connectWallet} from "../../redux/actions/metaData";
 import {BoldText, SmallHeading} from '../Text'
+import {ethers} from "ethers";
+import contractAddress from "../../contracts/contract-address.json";
+import registrarArtifact from "../../contracts/SignatureRegistrar.json";
+import crankArtifact from "../../contracts/CrankToken.json";
 
 const crankThatPicture = <Image
     src={process.env.PUBLIC_URL + "/crankthat.jpg"}
@@ -25,6 +29,23 @@ const RedeemForm = ({connectWallet, metaData}) => {
     const handleChange = e => {
         setAmountToRedeem(e.target.value);
     };
+
+    const handleRedeem = async () => {
+        if (!metaData.userAddress) {
+            connectWallet(metaData.web3Modal);
+            return;
+        }
+
+        const crankContract = new ethers.Contract(
+            contractAddress.CrankToken,
+            crankArtifact.abi,
+            metaData.signer
+        );
+
+        if (metaData.userAddress) {
+            crankContract.mintNFT();
+        }
+    }
 
     return (
         <Box
@@ -61,9 +82,7 @@ const RedeemForm = ({connectWallet, metaData}) => {
 
                 </Box>
             </Flex>
-            <FormButton onClick={!metaData.userAddress && (() => {
-                connectWallet(metaData.web3Modal)
-            })}>
+            <FormButton onClick={handleRedeem}>
                 {metaData.userAddress ? "REDEEM" : "CONNECT WALLET"}
             </FormButton>
         </Box>

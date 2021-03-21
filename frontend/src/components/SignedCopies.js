@@ -4,40 +4,32 @@ import {Link} from "react-router-dom";
 
 import {Heading, SmallHeading} from './Text'
 
+const Row = ({leftText, rightText}) => (
+  <Flex style={{marginTop: 20}}>
+    <Box
+        width={7 / 16}
+        color='#6F6F6F'
+        bg='primary'
+    >
+        {leftText}
+    </Box>
+    <Box
+        width={9 / 16}
+        color='#6F6F6F'
+        bg='primary'
+    >
+        {rightText}
+    </Box>
+  </Flex>
+)
 const SignedCopies = () => {
     return (
         <div>
-            <Heading>Signed Copies</Heading>
-            <Flex>
-                <Box
-                    p={3}
-                    width={1 / 2}
-                    color='#6F6F6F'
-                    bg='primary'
-                >
-                    <SmallHeading>Owner</SmallHeading>
-                    <ul>
-                        <li style={{marginBottom: 20}}>
-                            <Link to={{pathname: "/signed-copy"}}>katz The Man</Link>
-                        </li>
-                        <li>evan The God</li>
-                        <li>td3 The Boss</li>
-                    </ul>
-                </Box>
-                <Box
-                    p={3}
-                    width={1 / 2}
-                    color='#6F6F6F'
-                    bg='primary'
-                >
-                    <SmallHeading>Message</SmallHeading>
-                    <ul>
-                        <li style={{marginBottom: 20}}>To my parents who died in an acrobatics accident...</li>
-                        <li>To my parents who died in an acrobatics accident...</li>
-                        <li>To my parents who died in an acrobatics accident...</li>
-                    </ul>
-                </Box>
-            </Flex>
+          <Heading>Signed Copies</Heading>
+          <Row leftText={<SmallHeading>Owner</SmallHeading>} rightText={<SmallHeading>Message</SmallHeading>} />
+          <Row leftText={<Link to={{pathname: "/signed-copy"}}>katz The Man</Link>} rightText="To my parents who died in an acrobatics accident..." />
+          <Row leftText='evan The God' rightText="To my parents who died in an acrobatics accident..." />
+          <Row leftText='td3 The Boss' rightText="To my parents who died in an acrobatics accident..." />
         </div>
     );
 }

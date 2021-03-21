@@ -3,9 +3,10 @@ import Web3Modal from 'web3modal';
 import {CONNECT_SIGNER_AND_PROVIDER, SET_CONTRACT_LOADING, INITIALIZE_CONTRACT, RESET_DAPP, INITIALIZE_WEBTHREE_MODAL} from "./types";
 import {ethers} from "ethers";
 
-// import contractAddress from "../../contracts/contract-address.json";
-// import CArtifact from "../../contracts/CArtifact.json";
-let contractAddress, CArtifact = null;  // Placeholder for now
+import contractAddress from "../../contracts/contract-address.json";
+import crankArtifact from "../../contracts/CrankToken.json";
+import registrarArtifact from "../../contracts/SignatureRegistrar.json";
+import nftArtifact from "../../contracts/SouljaNFT.json";
 
 const clearWeb3ModalCache = (web3Modal) => {
   web3Modal.clearCachedProvider();
@@ -79,15 +80,27 @@ export const initializeContract = (signer) => async dispatch => {
                 loading: true
             }
         });
-        const contract = new ethers.Contract(
-            contractAddress.CONTRACTNAMEHERE,  // TODO: Change
-            CArtifact.abi,
+        const crankContract = new ethers.Contract(
+            contractAddress.CrankToken,
+            crankArtifact.abi,
+            signer
+        );
+        const registrarContract = new ethers.Contract(
+            contractAddress.CrankToken,
+            registrarArtifact.abi,
+            signer
+        );
+        const nftContract = new ethers.Contract(
+            contractAddress.CrankToken,
+            nftArtifact.abi,
             signer
         );
         dispatch({
             type: INITIALIZE_CONTRACT,
             payload: {
-                contract: contract
+                crankContract: crankContract,
+                registrarContract: registrarContract,
+                nftContract: nftContract
             }
         });
     } catch (error) {
