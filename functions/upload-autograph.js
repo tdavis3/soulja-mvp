@@ -3,14 +3,13 @@ import { ethers } from 'ethers'
 
 
 
-function convertBlock(buffer) { // incoming data is an ArrayBuffer
-  var incomingData = new Uint8Array(buffer); // create a uint8 view on the ArrayBuffer
-  var i, l = incomingData.length; // length, we need this for the loop
-  var outputData = new Float32Array(incomingData.length); // create the Float32Array for output
+function convertBlock(buffer){
+  var incomingData = new Uint8Array(buffer); 
+  var i, l = incomingData.length;
+  var outputData = new Float32Array(incomingData.length); 
   for (i = 0; i < l; i++) {
-      outputData[i] = (incomingData[i] - 128) / 128.0; // convert audio to float
-  }
-  return outputData; // return the Float32Array
+      outputData[i] = (incomingData[i] - 128) / 128.0; 
+  return outputData; 
 }
 
 // floats to dec to Bytes
