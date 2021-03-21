@@ -27,7 +27,7 @@ const autographTemplate = {
 };
 const lineTemplate = {
   points: [],
-  brushColor: "#444",
+  brushColor: "#FFF",
   brushRadius: 4
 };
 

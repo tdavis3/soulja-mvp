@@ -98,7 +98,9 @@ const AutographDraw = (props) => {
       console.log(res)
       if(res.status === 200) {
         alert('Successfully added autograph!')
-        // TODO: add reference in ETH
+        const json = await res.json();
+        const id = json.id;
+        // TODO: do something with this ID in eth!
       } else {
         alert('Failed :(')
       }
