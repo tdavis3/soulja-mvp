@@ -41,3 +41,8 @@ export const WalletButton = styled(BaseButton)`
   color: #6F6F6F !important;
   filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.07));
 `;
+
+export const FormButton = styled(BaseButton)`
+  background: black;
+  color: white;
+`;
