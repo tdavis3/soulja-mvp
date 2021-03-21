@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reach/dialog": "^0.13.2",
+    "@rebass/forms": "^4.0.6",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
