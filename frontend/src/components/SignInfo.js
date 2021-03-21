@@ -1,5 +1,6 @@
 import React from "react";
 import {Flex, Box, Image} from "rebass";
+import {useHistory} from 'react-router-dom';
 
 import {LargeHeading, Text, MediumSmallHeading} from './Text'
 import {RedeemButton} from "./Button";
@@ -15,8 +16,11 @@ const musk = <Image
 
 
 const SignInfo = () => {
+
+    let history = useHistory();
+
     return (
-        <div style={{marginTop:160}}>
+        <div style={{marginTop: 160}}>
             <Flex>
                 <Box
                     p={3}
@@ -24,7 +28,7 @@ const SignInfo = () => {
                     color='#6F6F6F'
                     bg='primary'
                     paddingLeft={0}>
-                    <LargeHeading>Get Your<br />Album Signed</LargeHeading>
+                    <LargeHeading>Get Your<br/>Album Signed</LargeHeading>
                     <Text>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore
@@ -47,7 +51,7 @@ const SignInfo = () => {
                 {/*TODO: ListView of copies*/}
             </Flex>
             <MediumSmallHeading marginTop={100}>Select an NFT to sign</MediumSmallHeading>
-            <RedeemButton>
+            <RedeemButton onClick={() => history.push('/signed')}>
                 Soulja Sign Me!
             </RedeemButton>
         </div>
