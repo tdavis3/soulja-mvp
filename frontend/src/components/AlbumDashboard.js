@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import {Box, Flex, Image} from "rebass";
 import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
+import {Modal} from "./Modal"
 
 
 const souljaBoyProfilePicture = <Image
@@ -32,6 +33,9 @@ const DataField = ({title, data, url}) => {
 
 
 const AlbumDashboard = () => {
+    const [showBuyModal, setShowBuyModal] = useState(false);
+    const [showSellModal, setShowSellModal] = useState(false);
+    const [showRedeemModal, setShowRedeemModal] = useState(false);
     return (
         <Flex marginBottom={120}>
             <Box
@@ -86,7 +90,7 @@ const AlbumDashboard = () => {
                         paddingLeft={0}
                         paddingBottom={28}
                         paddingTop={0}>
-                        <BuyButton>
+                        <BuyButton onClick={() => setShowBuyModal(true)}>
                             BUY
                         </BuyButton>
                     </Box>
@@ -98,12 +102,12 @@ const AlbumDashboard = () => {
                         paddingRight={0}
                         paddingBottom={28}
                         paddingTop={0}>
-                        <SellButton>
+                        <SellButton onClick={() => setShowSellModal(true)}>
                             SELL
                         </SellButton>
                     </Box>
                 </Flex>
-                <RedeemButton>
+                <RedeemButton onClick={() => setShowRedeemModal(true)}>
                     REDEEM
                 </RedeemButton>
             </Box>
@@ -120,6 +124,14 @@ const AlbumDashboard = () => {
                 }}>
                 {crankThatPicture}
             </Box>
+            <Modal isOpen={showBuyModal} onDismiss={() => setShowBuyModal(false)}>
+              <button className="close-button" onClick={() => setShowBuyModal(false)}>
+                {/*<VisuallyHidden>Close</VisuallyHidden>*/}
+                <span aria-hidden>×</span>
+              </button>
+              <p>Hello there. I am a dialog</p>
+              <BuyButton>BUY</BuyButton>
+            </Modal>
         </Flex>
     );
 }
