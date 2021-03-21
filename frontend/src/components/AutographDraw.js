@@ -37,6 +37,8 @@ const AutographDraw = (props) => {
                     outputArr.push(point.x);
                     outputArr.push(point.y);
                 });
+                // -1 separates lines
+                outputArr.push(-1);
             });
         }
         console.log(outputArr);
@@ -45,7 +47,7 @@ const AutographDraw = (props) => {
     // Returns line but with reduced precision
     const reducePrecisionOfLine = (line) => {
         const newPoints = [];
-        for (let i = 0; i < line.points.length; i += 8) {
+        for (let i = 0; i < line.points.length; i += 5) {
             newPoints.push(line.points[i]);
         }
         // Always include last point
