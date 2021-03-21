@@ -6,7 +6,7 @@ import {Modal} from "./Modal"
 import BuyForm from "./forms/BuyForm"
 import SellForm from "./forms/SellForm"
 import RedeemForm from "./forms/RedeemForm"
-import { ExternalLink, X } from 'react-feather';
+import {ExternalLink, X} from 'react-feather';
 import styled from 'styled-components';
 
 export const StyledLink = styled(Link)`
@@ -37,16 +37,19 @@ const DataField = ({title, data, url}) => {
     return (<>
         <SmallBoldText>{title}</SmallBoldText>
         {url
-        ? <StyledLink href={url}><BoldText sx={{fontWeight: 700}}>{data}<ExternalLink size={16} /></BoldText></StyledLink>
-        : <BoldText sx={{fontWeight: 700}}>{data}</BoldText>}
+            ? <StyledLink href={url}><BoldText sx={{fontWeight: 700}}>{data}<ExternalLink
+                size={16}/></BoldText></StyledLink>
+            : <BoldText sx={{fontWeight: 700}}>{data}</BoldText>}
     </>)
 }
 
 
 const AlbumDashboard = () => {
+
     const [showBuyModal, setShowBuyModal] = useState(false);
     const [showSellModal, setShowSellModal] = useState(false);
     const [showRedeemModal, setShowRedeemModal] = useState(false);
+
     return (
         <Flex marginBottom={120}>
             <Box
@@ -67,7 +70,7 @@ const AlbumDashboard = () => {
                     digital album.
                 </Text>
                 <Flex
-                  marginBottom={48}>
+                    marginBottom={48}>
                     <Box
                         width={1 / 3}
                         color="black"
@@ -136,16 +139,16 @@ const AlbumDashboard = () => {
                 {crankThatPicture}
             </Box>
             <Modal isOpen={showBuyModal} onDismiss={() => setShowBuyModal(false)}>
-              <StyledLink href="javascript:void(0);" onClick={() => setShowBuyModal(false)}><X /></StyledLink>
-              <BuyForm />
+                <StyledLink href="javascript:void(0);" onClick={() => setShowBuyModal(false)}><X/></StyledLink>
+                <BuyForm/>
             </Modal>
             <Modal isOpen={showSellModal} onDismiss={() => setShowSellModal(false)}>
-              <StyledLink href="javascript:void(0);" onClick={() => setShowSellModal(false)}><X /></StyledLink>
-              <SellForm />
+                <StyledLink href="javascript:void(0);" onClick={() => setShowSellModal(false)}><X/></StyledLink>
+                <SellForm/>
             </Modal>
             <Modal isOpen={showRedeemModal} onDismiss={() => setShowRedeemModal(false)}>
-              <StyledLink href="javascript:void(0);" onClick={() => setShowRedeemModal(false)}><X /></StyledLink>
-              <RedeemForm />
+                <StyledLink href="javascript:void(0);" onClick={() => setShowRedeemModal(false)}><X/></StyledLink>
+                <RedeemForm/>
             </Modal>
         </Flex>
     );
