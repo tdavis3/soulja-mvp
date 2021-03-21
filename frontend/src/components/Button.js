@@ -24,6 +24,7 @@ export const BaseButton = styled(Button)`
       filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)) brightness(90%);
     }
 `;
+
 export const BuyButton = styled(BaseButton)`
   background: linear-gradient(to right, #A8E063, #C8E5A4);
 `
@@ -35,6 +36,7 @@ export const SellButton = styled(BaseButton)`
 export const RedeemButton = styled(BaseButton)`
   background: linear-gradient(to right, #F3BF04, #F9DA6B);
 `
+
 export const WalletButton = styled(BaseButton)`
   background: white;
   border: #EEEEEE 1px solid !important;
