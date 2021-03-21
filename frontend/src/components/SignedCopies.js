@@ -1,11 +1,12 @@
 import React from "react";
 import {Flex} from "rebass";
 
+import {Heading} from './Text'
 
 const SignedCopies = () => {
     return (
         <div>
-            <h1>Signed Copies</h1>
+            <Heading>Signed Copies</Heading>
             <Flex>
                 <div>
                     <p>Owner</p>

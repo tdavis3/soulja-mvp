@@ -40,22 +40,13 @@ const AlbumDashboard = () => {
                 color='#6F6F6F'
                 bg='primary'
                 paddingRight={76}>
-                <Heading
-                    fontSize={[5, 6, 7]}
-                    color='primary'>
+                <Heading>
                     Soulja World
                 </Heading>
-                <SmallHeading
-                    fontSize={[3, 4, 5]}
-                    fontWeight='bold'
-                    color='primary'>
+                <SmallHeading>
                     <span style={{display: "flex", alignItems: "center"}}>By {souljaBoyProfilePicture} Soulja Boy</span>
                 </SmallHeading>
-                <Text
-                    fontSize={[1, 2, 3]}
-                    fontWeight='bold'
-                    color='primary'
-                    marginBottom={20}>
+                <Text marginBottom={20}>
                     Soulja Boy’s first digital album drop. Buy $CRANK tokens, sell $CRANK tokens. When you’re ready to
                     join the club of winners, redeem for a signed digital album. You can request Soulja Boy sign your
                     digital album.
