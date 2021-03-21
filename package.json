@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^3.4.1",
+    "encoding": "^0.1.13",
     "netlify-lambda": "^2.0.3",
     "node-fetch": "^2.6.1"
   }

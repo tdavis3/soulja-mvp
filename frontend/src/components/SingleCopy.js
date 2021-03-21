@@ -35,7 +35,7 @@ const SingleCopy = () => {
     useEffect(() => {
       async function get() {
         if (!canvasRef.current) return;
-        const res = await fetch('http://localhost:9000/get-autograph', {
+        const res = await fetch('https://souljamvp.netlify.app/.netlify/functions/get-autograph', {
           method: 'POST',
           mode: 'cors',
           body: JSON.stringify({ id: signatureId })

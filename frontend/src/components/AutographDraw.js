@@ -90,7 +90,7 @@ const AutographDraw = (props) => {
 
     const uploadAutograph = async () => {
       const autograph = parseLines();
-      const res = await fetch('http://localhost:9000/upload-autograph', {
+      const res = await fetch('https://souljamvp.netlify.app/.netlify/functions/upload-autograph', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({ floatsStr: JSON.stringify(autograph), message })
