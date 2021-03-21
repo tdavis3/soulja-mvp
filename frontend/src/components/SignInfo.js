@@ -30,12 +30,7 @@ const SignInfo = () => {
                     paddingLeft={0}>
                     <LargeHeading>Get Your<br/>Album Signed</LargeHeading>
                     <Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore
-                        et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip
-                        ex ea commodo consequat.
+                        Make your NFT album personal by requesting a signing from Soulja Boy. He'll write a special message of your request and manually scribble his signature on the coverart. This is the most personal digital music you've had in a long time.
                     </Text>
                 </Box>
                 <Box
