@@ -1,5 +1,5 @@
-import {Button} from 'rebass';
-import styled from 'styled-components';
+import { Button } from "rebass";
+import styled from "styled-components";
 
 export const BaseButton = styled(Button)`
     width: 100%;
@@ -9,42 +9,41 @@ export const BaseButton = styled(Button)`
     color: black;
     border-radius: 10px !important;
     font-weight: 700;
-    font-family: 'Inter';
+    font-family: "Inter";
     height: 57px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.1));
+    transition: all 0.2s ease-in-out;
     :focus {
-      outline:0;
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        outline: 0;
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2));
     }
     :hover {
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) brightness(90%);
-    }
-    :active {
-      transform: scale(0.98);
-      filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0)) brightness(90%);
+        filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.2)) brightness(105%);
+        cursor: pointer;
+        transform: scale(1.03);
     }
 `;
 
 export const BuyButton = styled(BaseButton)`
-  background: linear-gradient(to right, #A8E063, #C8E5A4);
-`
+    background: linear-gradient(to right, #a8e063, #c8e5a4);
+`;
 
 export const SellButton = styled(BaseButton)`
-  background: linear-gradient(to right, #F27474, #FDA8A8);
-`
+    background: linear-gradient(to right, #f27474, #fda8a8);
+`;
 
 export const RedeemButton = styled(BaseButton)`
-  background: linear-gradient(to right, #F3BF04, #F9DA6B);
-`
+    background: linear-gradient(to right, #f3bf04, #f9da6b);
+`;
 
 export const WalletButton = styled(BaseButton)`
-  background: white;
-  border: #EEEEEE 1px solid !important;
-  color: #6F6F6F !important;
-  filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.07));
+    background: white;
+    border: #eeeeee 1px solid !important;
+    color: #6f6f6f !important;
+    filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.07));
 `;
 
 export const FormButton = styled(BaseButton)`
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 `;
