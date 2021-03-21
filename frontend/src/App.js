@@ -7,6 +7,7 @@ import {
 import Header from "./components/layout/Header";
 import Landing from "./components/Landing";
 import SignedCopies from "./components/SignedCopies";
+import SingleCopy from "./components/SingleCopy";
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
                 <Switch>
                     <Route path="/signed">
                         <SignedCopies/>
+                    </Route>
+                    <Route path="/signed-copy">
+                        <SingleCopy/>
                     </Route>
                     <Route path="/">
                         <Landing/>
