@@ -7,6 +7,7 @@ import {
 import {FormButton} from "../Button";
 import {connect} from "react-redux";
 import {connectWallet} from "../../redux/actions/metaData";
+import {BoldText, SmallHeading} from '../Text'
 
 const crankThatPicture = <Image
     src={process.env.PUBLIC_URL + "/crankthat.jpg"}
@@ -22,7 +23,7 @@ const BuyForm = ({connectWallet, metaData}) => {
       as='form'
       onSubmit={e => e.preventDefault()}
       py={3}>
-
+      <SmallHeading marginBottom={20}>Pay</SmallHeading>
       <Flex mx={-2} mb={3}>
         <Box width={1 / 3} px={2}>
 
@@ -30,7 +31,7 @@ const BuyForm = ({connectWallet, metaData}) => {
         </Box>
         <Box width={2 / 3} px={2}>
           <Box sx={{display:'flex', alignItems: 'center', justifyContent:'space-between'}}>
-            <Label htmlFor='amount'>$CRANK Amount</Label>
+            <Label htmlFor='amount'><BoldText>$CRANK</BoldText></Label>
             <Input
               id='amount'
               name='amount'
@@ -40,8 +41,15 @@ const BuyForm = ({connectWallet, metaData}) => {
               textAlign="right"
             />
           </Box>
+          {
+            0 > 1 && //TODO: only show this part if the user is buying > 1 $CRANK
+            <Box sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', marginTop:20}}>
+              <BoldText>Unit Price</BoldText>
+              $1,000
+            </Box>
+          }
           <Box sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', marginTop:20}}>
-            <span>Cost USDC</span>
+            <BoldText>Total Price</BoldText>
             $2,000
           </Box>
         </Box>
