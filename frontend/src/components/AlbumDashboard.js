@@ -26,9 +26,10 @@ const souljaBoyProfilePicture = <Image
 />;
 
 const crankThatPicture = <Image
-    src={process.env.PUBLIC_URL + "/crankthat.jpg"}
+    src={process.env.PUBLIC_URL + "/crankthatsideways.png"}
     sx={{
-        width: ['100%', '50%'],
+        //width: ['100%', '50%'],
+        width: 450,
         borderRadius: 8,
     }}
 />;
