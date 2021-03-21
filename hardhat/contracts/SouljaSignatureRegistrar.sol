@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol";
+import "./OZ/access/Ownable.sol";
+import "./OZ/token/ERC721/IERC721.sol";
 
 contract SignatureRegistrar is Ownable {
     event SignRequestCreated(
@@ -44,7 +44,7 @@ contract SignatureRegistrar is Ownable {
     function sign(
         address nftContract,
         uint256 nftID,
-        string signatureFile
+        string calldata signatureFile
     ) public {
         require(
             nftToSignatureID[nftContract][nftID] == 0,
