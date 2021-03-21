@@ -8,6 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 1185px;
   margin: 0 auto;
+  padding-bottom: 160px;
 }
 
 code {
