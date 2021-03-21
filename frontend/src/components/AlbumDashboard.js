@@ -1,10 +1,18 @@
 import React, {useState} from "react";
-import {Box, Flex, Image} from "rebass";
+import {Box, Flex, Image, Link} from "rebass";
 import {Heading, SmallHeading, Text, SmallBoldText, BoldText} from './Text'
 import {BuyButton, RedeemButton, SellButton} from "./Button";
 import {Modal} from "./Modal"
 import BuyForm from "./forms/BuyForm"
+import SellForm from "./forms/SellForm"
+import RedeemForm from "./forms/RedeemForm"
+import { ExternalLink, X } from 'react-feather';
+import styled from 'styled-components';
 
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
 
 const souljaBoyProfilePicture = <Image
     src={process.env.PUBLIC_URL + "/souljaboy.jpg"}
@@ -28,7 +36,9 @@ const crankThatPicture = <Image
 const DataField = ({title, data, url}) => {
     return (<>
         <SmallBoldText>{title}</SmallBoldText>
-        <BoldText sx={{fontWeight: 700}}>{data} {url && "linkicon"}</BoldText>
+        {url
+        ? <StyledLink href={url}><BoldText sx={{fontWeight: 700}}>{data}<ExternalLink size={16} /></BoldText></StyledLink>
+        : <BoldText sx={{fontWeight: 700}}>{data}</BoldText>}
     </>)
 }
 
@@ -79,7 +89,7 @@ const AlbumDashboard = () => {
                         bg="primary"
                         paddingTop={28}
                         paddingRight={0}>
-                        <DataField title="ERC20 Contract" data="0x00000" url="http://"/>
+                        <DataField title="ERC20 Contract" data="0x00000…" url="http://"/>
                     </Box>
                 </Flex>
                 <Flex>
@@ -126,11 +136,16 @@ const AlbumDashboard = () => {
                 {crankThatPicture}
             </Box>
             <Modal isOpen={showBuyModal} onDismiss={() => setShowBuyModal(false)}>
-              <button className="close-button" onClick={() => setShowBuyModal(false)}>
-                {/*<VisuallyHidden>Close</VisuallyHidden>*/}
-                <span aria-hidden>×</span>
-              </button>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowBuyModal(false)}><X /></StyledLink>
               <BuyForm />
+            </Modal>
+            <Modal isOpen={showSellModal} onDismiss={() => setShowSellModal(false)}>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowSellModal(false)}><X /></StyledLink>
+              <SellForm />
+            </Modal>
+            <Modal isOpen={showRedeemModal} onDismiss={() => setShowRedeemModal(false)}>
+              <StyledLink href="javascript:void(0);" onClick={() => setShowRedeemModal(false)}><X /></StyledLink>
+              <RedeemForm />
             </Modal>
         </Flex>
     );
